@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Cloning Git') {
       steps {
-        git ''
+        git 'https://github.com/chetanamarella/projCert.git'
       }
     }
     stage('Building image') {
@@ -27,10 +27,6 @@ pipeline {
         }
       }
     }
-    stage('Remove Unused docker image') {
-      steps{
-        sh "docker rmi $registry:$BUILD_NUMBER"
-      }
-    }
+    
   }
 }
