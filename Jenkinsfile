@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "https://hub.docker.com/repository/docker/chetana3/php"
+    registry = "chetana3/php"
     registryCredential = 'dockerhub'
     dockerImage = ''
   }
