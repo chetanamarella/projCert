@@ -32,6 +32,8 @@ pipeline {
     
     stage('Deploy to container') {
       steps{
+         sh 'sudo docker stop newPhpContainer'
+         sh 'sudo docker rm newPhpContainer'
         script {
           dockerImage.run('-itd --name newPhpContainer -p 8085:80')
         }
