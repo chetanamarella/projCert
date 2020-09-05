@@ -30,5 +30,10 @@ pipeline {
       }
     }
     
+    stage('Deploy to container') {
+      steps{
+        script {
+          dockerImage.withRun('-itd --name newPhpContainer -p 8085:80')
+    
   }
 }
