@@ -40,5 +40,10 @@ pipeline {
       }
     } 
     
+    stage('test') {
+      steps{
+        sh 'java -jar test.jar'
+      }
+    }
   }
 }
