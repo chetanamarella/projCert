@@ -20,7 +20,7 @@ pipeline {
         }
       }
     }
-    stage('Deploy Image') {
+    stage('Push Image') {
       steps{
         script {
           docker.withRegistry( '', registryCredential ) {
@@ -40,7 +40,7 @@ pipeline {
       }
     } 
     
-    stage('Test') {
+    stage('Selenium Test') {
       steps{
         sh 'java -jar test.jar'
       }
