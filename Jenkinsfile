@@ -3,6 +3,7 @@ pipeline {
     registry = "chetana3/php"
     registryCredential = 'dockerhub'
     dockerImage = ''
+    status = ''
   }
   agent {
     label 'slave'
@@ -31,14 +32,19 @@ pipeline {
     }
     
     stage('Deploy to container') {
+      when {
+        expression {
+          status = docker ps -a | grep newPhpContainer | awk -F" " '{print $9}'
+          return status == 'Up' || 'Exited'
+        }
+      }    
       steps{
-         sh 'sudo docker stop newPhpContainer'
-         sh 'sudo docker rm newPhpContainer'
-        script {
-          dockerImage.run('-itd --name newPhpContainer -p 8085:80')
+         echo "yes"
+      }
+      {
+         dockerImage.run('-itd --name newPhpContainer -p 8085:80')
         }
       }
-    } 
     
     stage('Selenium Test') {
       steps{
