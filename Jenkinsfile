@@ -49,8 +49,14 @@ pipeline {
 } 
     post {
       always {
-        echo 'RESULT: ${currentBuild.result}'
+        echo 'Printing build result'
       }
-    } 
+      success {
+        echo 'Build is a success'
+      }
+      failure {
+        echo 'Build failed'
+      }
+    }
   
 
