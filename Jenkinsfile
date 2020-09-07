@@ -44,13 +44,19 @@ pipeline {
       steps{
         sh 'java -jar test.jar'
       }
-     post {
-                always {
-                    echo "Post-Build result: ${currentBuild.result}"
-                    echo "Post-Build currentResult: ${currentBuild.currentResult}"
-                }
-            }
+      post {
+        always {
+          echo "Post build task"
         }
+        success {
+          echo "Build was successful"
+        }
+        failure {
+          sh 'sudo docker stop newPhpContainer'
+          sh 'sudo docker rm newPhpContainer'
+        }
+      }
+    } 
   }
 }
   
