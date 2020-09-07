@@ -45,5 +45,10 @@ pipeline {
         sh 'java -jar test.jar'
       }
     } 
+    stage('Printing Build Status') {
+      steps{
+        echo "RESULT: ${currentBuild.result}"
+      }
+    } 
   }
 }
