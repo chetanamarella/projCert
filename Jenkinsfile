@@ -44,11 +44,13 @@ pipeline {
       steps{
         sh 'java -jar test.jar'
       }
-    } 
+    }
+  }
+} 
     post {
       always {
         echo "RESULT: ${currentBuild.result}"
       }
     } 
-  }
-}
+  
+
