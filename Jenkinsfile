@@ -44,9 +44,6 @@ pipeline {
       steps{
         sh 'java -jar test.jar'
       }
-    }
-  }
-} 
     post {
       always {
         echo 'Printing build result'
@@ -58,5 +55,9 @@ pipeline {
         echo 'Build failed'
       }
     }
+    }
+  }
+}
+    
   
 
