@@ -44,20 +44,14 @@ pipeline {
       steps{
         sh 'java -jar test.jar'
       }
-    post {
-      always {
-        echo 'Printing build result'
-      }
-      success {
-        echo 'Build is a success'
-      }
-      failure {
-        echo 'Build failed'
-      }
-    }
-    }
+     post {
+                always {
+                    echo "Post-Build result: ${currentBuild.result}"
+                    echo "Post-Build currentResult: ${currentBuild.currentResult}"
+                }
+            }
+        }
   }
 }
-    
   
 
