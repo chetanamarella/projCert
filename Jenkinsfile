@@ -42,11 +42,14 @@ pipeline {
       steps{
         script {
           
-          if ($status == 'Up' || 'Exited') {
-            echo "yes"
+          if ($status == 'Up') {
+            echo "It is up"
           }
-          else {
-            echo "no"
+          if ($status == 'Exited') {
+            echo "It exited"
+          }
+          if ($status == 'null') {
+            echo "It does not exist"
           }
         }
       }
