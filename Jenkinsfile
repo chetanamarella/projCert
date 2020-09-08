@@ -44,7 +44,6 @@ pipeline {
           status == 'Up' || 'Exited'
         }
       }
-    }
       steps {
         sh 'sudo docker rm newPhpContainer -f'
       }
