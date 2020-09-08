@@ -35,7 +35,6 @@ pipeline {
       steps{
         script {
           status = sh(script: "docker ps -a | grep newPhpContainer | awk -F\" \" '{print \$9}'") 
-          echo "$status"
         }
       }
     }
@@ -43,6 +42,7 @@ pipeline {
       when {
         expression {
           status == 'Up' || 'Exited'
+          echo "$status"
         }
       }
       steps {
