@@ -31,28 +31,6 @@ pipeline {
       }
     }
     
-    stage('Checking if container already exists') {
-      steps{
-        script {
-          def status = echo sh(script: "docker ps -a | grep newPhpContainer | awk -F\" \" '{print \$9}'").result
-          echo "${env.status}"
-        }
-      }
-    }
-    stage('Removing container if it already exists') {
-      steps{
-        script {
-          
-          if (status == 'Up') {
-            echo "it is up"
-          }
-          else {
-            echo "no"
-        
-          }
-        }
-      }
-    }
     
     stage('Deploy to container') {
       steps{
@@ -66,6 +44,18 @@ pipeline {
       steps{
         sh 'java -jar test.jar'
       }
+       post {
+        always {
+          echo "Post build task"
+        }
+        success {
+          echo "Build was successful"
+        }
+        failure {
+          sh 'sudo docker stop newPhpContainer'
+          sh 'sudo docker rm newPhpContainer'
+        }
+       }
     }
   }
 } 
