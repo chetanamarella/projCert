@@ -34,7 +34,7 @@ pipeline {
     stage('Checking if container already exists') {
       steps{
         script {
-          status = ${sh(script: "docker ps -a | grep newPhpContainer | awk -F\" \" '{print \$9}'")}
+          status = $sh(script: "docker ps -a | grep newPhpContainer | awk -F\" \" '{print \$9}'")
           echo "${env.status}"
         }
       }
