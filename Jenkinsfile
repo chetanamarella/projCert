@@ -39,13 +39,20 @@ pipeline {
       }
     }
     stage('Removing container if it already exists') {
-      when {
-        expression {
-          status == 'Up' || 'Exited'
-          echo "$status"
+      steps{
+        script {
+          
+          if ('status' == 'Up' || 'Exited') {
+            echo "yes"
+          }
+          else {
+            echo "no"
+          }
         }
       }
+    }
       steps {
+        echo 
         sh 'sudo docker rm newPhpContainer -f'
       }
     }
