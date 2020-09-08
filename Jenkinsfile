@@ -3,7 +3,7 @@ pipeline {
     registry = "chetana3/php"
     registryCredential = 'dockerhub'
     dockerImage = ''
-    def status = ''
+    status = ''
   }
   agent {
     label 'slave'
@@ -34,7 +34,7 @@ pipeline {
     stage('Checking if container already exists') {
       steps{
         script {
-          status = sh(script: "docker ps -a | grep newPhpContainer | awk -F\" \" '{print \$9}'")
+          status = ${sh(script: "docker ps -a | grep newPhpContainer | awk -F\" \" '{print \$9}'")}
           echo "${env.status}"
         }
       }
