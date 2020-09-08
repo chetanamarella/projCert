@@ -43,13 +43,13 @@ pipeline {
         script {
           
           if (status == 'Up') {
-            echo 'It is up'
+            sh 'echo It is up'
           }
           if (status == 'Exited') {
-            echo 'It exited'
+            sh 'echo It exited'
           }
           if (status == 'null') {
-            echo 'It does not exist'
+            sh 'echo It does not exist'
           }
         }
       }
