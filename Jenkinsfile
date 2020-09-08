@@ -3,7 +3,7 @@ pipeline {
     registry = "chetana3/php"
     registryCredential = 'dockerhub'
     dockerImage = ''
-    status = ''
+    def status = ''
   }
   agent {
     label 'slave'
