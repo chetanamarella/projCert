@@ -51,11 +51,6 @@ pipeline {
         }
       }
     }
-      steps {
-        echo 
-        sh 'sudo docker rm newPhpContainer -f'
-      }
-    }
     
     stage('Deploy to container') {
       steps{
