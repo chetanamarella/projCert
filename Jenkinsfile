@@ -42,13 +42,13 @@ pipeline {
       steps{
         script {
           
-          if ($status == 'Up') {
+          if (${status} == 'Up') {
             echo "It is up"
           }
-          if ($status == 'Exited') {
+          if (${status} == 'Exited') {
             echo "It exited"
           }
-          if ($status == 'null') {
+          if (${status} == 'null') {
             echo "It does not exist"
           }
         }
