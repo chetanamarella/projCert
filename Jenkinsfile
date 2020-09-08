@@ -31,17 +31,20 @@ pipeline {
       }
     }
     
-    stage('Removing container if it already exists') {
+    stage('Checking if container already exists') {
       steps{
         script {
           status = sh(script: "docker ps -a | grep newPhpContainer | awk -F\" \" '{print \$9}'") 
         }
       }
+    }
+    stage('Removing container if it already exists') {
       when {
         expression {
           status == 'Up' || 'Exited'
         }
       }
+    }
       steps {
         sh 'sudo docker rm newPhpContainer -f'
       }
