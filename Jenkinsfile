@@ -45,9 +45,6 @@ pipeline {
           if (status == 'Up') {
             echo "it is up"
           }
-          else if(status == 'Exited') {
-            echo "it is exited"
-          }
           else {
             echo "no"
         
