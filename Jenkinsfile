@@ -42,7 +42,7 @@ pipeline {
       steps{
         script {
           
-          if ('status' == 'Up' || 'Exited') {
+          if ('status' == 'Up' OR 'Exited') {
             echo "yes"
           }
           else {
