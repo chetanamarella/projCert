@@ -36,7 +36,7 @@ pipeline {
       agent {label 'slave'}
       steps{
         script {
-          status = sh(docker inspect -f='{{.State.Status}}' newPhpContainer)
+          status = $(docker inspect -f='{{.State.Status}}' newPhpContainer)
           echo ${status}
         }
       }
