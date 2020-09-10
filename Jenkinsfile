@@ -45,7 +45,7 @@ pipeline {
       agent {label 'slave2'}
       steps {
         script {
-          dockerImage.run('-itd --name newPhpContainer2 -p 8085:80')
+          dockerImage.run('-itd --name newPhpContainer -p 8085:80')
         }
       }
     }
