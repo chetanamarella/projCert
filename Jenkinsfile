@@ -3,6 +3,7 @@ pipeline {
     registry = "chetana3/php"
     registryCredential = 'dockerhub'
     dockerImage = ''
+    status =  " "
     
   }
   agent none
@@ -31,6 +32,16 @@ pipeline {
         }
       }
     }
+    stage('Check if container is already exists') {
+      agent {label 'slave'}
+      steps{
+        script {
+          status = sh(docker inspect -f='{{.State.Status}}' newPhpContainer)
+          echo ${status}
+        }
+      }
+    }
+
     
     
     stage('Deploy to container') {
@@ -41,14 +52,7 @@ pipeline {
         }
       }
     }
-    stage('Deploy to prod') {
-      agent {label 'slave2'}
-      steps {
-        script {
-          dockerImage.run('-itd --name newPhpContainer -p 8085:80')
-        }
-      }
-    }
+   
   }
 }
 
