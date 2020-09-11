@@ -36,8 +36,19 @@ pipeline {
       steps{
         sh '''#!/bin/bash
 
-                    echo "Hello from bash"
-                    echo "Who I'm $SHELL"
+                x=$( docker container inspect -f '{{.State.Status}}' newPhpContainer )
+                echo $x
+
+                if [ $x == "running" ]
+                then
+                        echo "yes run"
+                fi
+
+                if [ $x == "exited" ]
+                then
+                        echo "no run"
+                fi
+                
                 '''
           
        
