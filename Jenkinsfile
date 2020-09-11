@@ -35,7 +35,7 @@ pipeline {
       agent {label 'slave'}
       steps{
         script {
-          def status = sh(script: "docker container inspect -f '{{.State.Status}}' $newPhpContainer", returnStdout: true).trim()
+          def status = sh(script: "docker container inspect -f '{{.State.Status}}' newPhpContainer", returnStdout: true).trim()
           echo ${status}
         }
       }
