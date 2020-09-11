@@ -21,7 +21,7 @@ pipeline {
         }
       }
     }
-    stage('Push Image') {
+    stage('Pushing Image') {
       agent {label 'slave'}
       steps{
         script {
@@ -31,7 +31,7 @@ pipeline {
         }
       }
     }
-    stage('Check if container is already exists') {
+    stage('Removing container if it already exists') {
       agent {label 'slave'}
       steps{
         sh '''#!/bin/bash
@@ -59,7 +59,7 @@ pipeline {
     }
 
     
-    stage('Deploy to container') {
+    stage('Deploying to test server') {
       agent {label 'slave'}
       steps{
         script {
