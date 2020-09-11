@@ -3,7 +3,6 @@ pipeline {
     registry = "chetana3/php"
     registryCredential = 'dockerhub'
     dockerImage = ''
-    status =  " "
     
   }
   agent none
@@ -36,13 +35,12 @@ pipeline {
       agent {label 'slave'}
       steps{
         script {
-          status = $(docker container inspect -f='{{.State.Status}}' newPhpContainer)
+          def status = sh(script: "docker container inspect -f '{{.State.Status}}' $newPhpContainer", returnStdout: true).trim()
           echo ${status}
         }
       }
     }
 
-    
     
     stage('Deploy to container') {
       agent {label 'slave'}
