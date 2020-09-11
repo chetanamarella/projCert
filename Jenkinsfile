@@ -39,12 +39,12 @@ pipeline {
                 x=$( docker container inspect -f '{{.State.Status}}' newPhpContainer )
                 echo $x
 
-                if [ $x -eq "running" ]
+                if [ $x == "running" ]
                 then
                         sudo docker stop newPhpContainer
                         sudo docker rm newPhpContainer
 
-                elif [ $x -eq "exited" ]
+                elif [ $x == "exited" ]
                 then
                         sudo docker rm newPhpContainer
                         
