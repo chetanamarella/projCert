@@ -41,7 +41,8 @@ pipeline {
 
                 if [ $x == "running" ]
                 then
-                        echo "yes run"
+                        sh 'sudo docker stop newPhpContainer'
+                        sh 'sudo docker rm newPhpContainer'
                 fi
 
                 if [ $x == "exited" ]
