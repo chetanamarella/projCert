@@ -78,7 +78,7 @@ pipeline {
            echo "Post build task"
          }
          success {
-           echo "Build was successful"
+           echo "Test was successful"
          }
          failure {
            sh 'sudo docker stop newPhpContainer'
@@ -86,6 +86,14 @@ pipeline {
          }
        }
      }
+    stage('Deploy to prod') {
+      agent {label 'slave2'}
+      steps {
+        script {
+          dockerImage.run('-itd --name newPhpContainer -p 8085:80')
+        }
+      }
+    }
   }
 }
 
