@@ -43,11 +43,13 @@ pipeline {
                 then
                         sudo docker stop newPhpContainer
                         sudo docker rm newPhpContainer
-                fi
 
-                if [ $x == "exited" ]
+                elif [ $x == "exited" ]
                 then
                         sudo docker rm newPhpContainer
+                        
+                else
+                        echo "Container does not exist"
                 fi
                 
                 '''
