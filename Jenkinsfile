@@ -34,10 +34,13 @@ pipeline {
     stage('Check if container is already exists') {
       agent {label 'slave'}
       steps{
-        script {
-          def status = sh(script: "docker container inspect -f '{{.State.Status}}' newPhpContainer")
-          echo ${status}
-        }
+        sh '''#!/bin/bash
+
+                    echo "Hello from bash"
+                    echo "Who I'm $SHELL"
+                '''
+          
+       
       }
     }
 
