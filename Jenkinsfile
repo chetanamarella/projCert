@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "chetana3/php"
+    registry = "chetana3/phpProj"
     registryCredential = 'dockerhub'
     dockerImage = ''
     
@@ -86,14 +86,7 @@ pipeline {
          }
        }
      }
-    stage('Deploy to prod') {
-      agent {label 'slave2'}
-      steps {
-        script {
-          dockerImage.run('-itd --name newPhpContainer -p 8085:80')
-        }
-      }
-    }
+   
   }
 }
 
