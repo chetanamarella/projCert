@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM devopsedu/webapp
 MAINTAINER chetana
 
 RUN apt-get update
