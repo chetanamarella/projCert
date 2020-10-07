@@ -17,6 +17,7 @@ pipeline {
       agent {label 'slave'}
       steps{
         script {
+          sh 'whoami'
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
       }
