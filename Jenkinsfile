@@ -8,7 +8,7 @@ pipeline {
   agent none
   stages {
     stage('Cloning Git') {
-      agent {label 'slave && slave2'}
+      agent {label "slave && slave2"}
       steps {
         git 'https://github.com/chetanamarella/projCert.git'
       }
