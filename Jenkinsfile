@@ -60,7 +60,7 @@ pipeline {
       agent {label 'slave'}
       steps{
         script {
-          dockerImage.run('-itd --name newPhpContainer -p 8085:80')
+          ansiblePlaybook credentialsId: 'slave-server', disableHostKeyChecking: true, extras: '$BUILD_NUMBER', installation: 'myansible', inventory: 'dev.inv', playbook: 'new.yml'
         }
       }
     }
