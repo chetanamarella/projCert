@@ -57,7 +57,7 @@ pipeline {
 
     
     stage('Deploying to test server') {
-      agent {label 'slave'}
+      agent {label 'master'}
       steps{
           ansiblePlaybook credentialsId: 'slave-server', disableHostKeyChecking: true, extras: '$BUILD_NUMBER', installation: 'myansible', inventory: 'dev.inv', playbook: 'new.yml'
       }
