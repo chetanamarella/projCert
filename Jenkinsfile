@@ -59,7 +59,6 @@ pipeline {
     stage('Deploying to test server') {
       agent {label 'master'}
       steps{
-          sh 'sudo su -s /bin/bash jenkins'
           ansiblePlaybook credentialsId: 'slave-server', disableHostKeyChecking: true, extras: '$BUILD_NUMBER', installation: 'myansible', inventory: 'dev.inv', playbook: 'new.yml'
       }
     }
