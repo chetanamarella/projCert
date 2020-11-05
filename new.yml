@@ -12,7 +12,7 @@
   - name: Running the container
     docker_container:
      name: neww
-     image: chetana3/project:$BUILD_NUMBER
+     image: chetana3/project:20
      ports:
       - "8085:80"
      state: started
