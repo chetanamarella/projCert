@@ -1,8 +1,7 @@
 ---
-- hosts:
+- hosts: 3.138.86.154 
   become: true
   become_user: root
-  ansible_host: 3.138.86.154
   tasks:    
   - name: Install pip
     apt: name=python3-pip state=present
