@@ -3,7 +3,6 @@
   become: true
   become_user: root
   ansible_host: 3.138.86.154
-  ansible_port: 22
   tasks:    
   - name: Install pip
     apt: name=python3-pip state=present
