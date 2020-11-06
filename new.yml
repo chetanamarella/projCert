@@ -1,5 +1,5 @@
 ---
-- hosts: webservers
+- hosts: 18.191.152.242
   become: true
   become_user: root
   tasks:    
