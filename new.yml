@@ -1,5 +1,5 @@
 ---
-- hosts: 3.138.86.154 
+- hosts: webservers
   become: true
   become_user: root
   tasks:    
