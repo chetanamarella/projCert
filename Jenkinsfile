@@ -57,14 +57,31 @@ pipeline {
 
     
     stage('Deploying to test server') {
-      agent {label 'master'}
+      agent {label 'slave'}
       steps{
-        sh 'ansible-playbook new.yml'
+        script {
+          dockerImage.run('-itd --name newPhpContainer -p 8085:80')
           
-        
+        }
       }
     }
-    
-       
+    stage('Selenium Test'){
+      agent {label 'slave'}
+       steps{
+         sh 'java -jar test.jar'
+       }
+      post {
+         always {
+           echo "Post build task"
+         }
+         success {
+           echo "Test was successful"
+         }
+         failure {
+           sh 'sudo docker stop newPhpContainer'
+           sh 'sudo docker rm newPhpContainer'
+         }
+       }
+     }
   }
 }
