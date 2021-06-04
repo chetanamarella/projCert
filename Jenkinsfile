@@ -61,16 +61,16 @@ pipeline {
       steps{
         script {
           dockerImage.run('-itd --name newPhpContainer -p 8085:80')
+          
         }
       }
     }
-    
-     stage('Selenium Test') {
-       agent {label 'slave'}
+    stage('Selenium Test'){
+      agent {label 'slave'}
        steps{
          sh 'java -jar test.jar'
        }
-       post {
+      post {
          always {
            echo "Post build task"
          }
@@ -83,6 +83,5 @@ pipeline {
          }
        }
      }
-   
   }
 }
