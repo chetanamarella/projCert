@@ -65,7 +65,7 @@ pipeline {
         }
       }
     }
-    stage('Selenium Test'){
+    /*stage('Selenium Test'){
       agent {label 'slave'}
        steps{
          sh 'java -jar test.jar'
@@ -82,7 +82,7 @@ pipeline {
            sh 'sudo docker rm newPhpContainer'
          }
        }
-     }
+     }*/
     
     stage('Deploy through kubernetes') {
       agent {label 'master'}
