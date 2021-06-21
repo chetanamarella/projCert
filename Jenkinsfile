@@ -83,5 +83,14 @@ pipeline {
          }
        }
      }
+    
+    stage('Deploy through kubernetes') {
+      agent {label 'master'}
+      steps{
+        sh 'kubectl create -f deploy.yml'
+        sh 'kubectl create -f service.yml'
+      }
+    }
+      
   }
 }
