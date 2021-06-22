@@ -88,6 +88,7 @@ pipeline {
       agent {label 'master'}
       steps{
         sh 'cd /kube'
+        sh 'sudo su'
         sh 'kubectl create -f deploy.yml'
         sh 'kubectl create -f service.yml'
       }
